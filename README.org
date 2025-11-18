@@ -1,0 +1,62 @@
+#+title: Project Discover
+#+author: Sam Precious
+
+This package is a helper package on top of project.el that emulates the functionality of projectile's projectile-discover-projects-in-directory functionality. Provide a dictionary of paths and depths to search and this will populate the project-list.el file with the projects it finds.
+
+** Installation
+ 
+*** Manully
+Clone the repo somewhere
+#+begin_src emacs-lisp
+  (load "/path/to/project-discover.el")
+
+  ;; Windows:
+  (setq project-discover-directory-alist
+        '(("c:/projects" . 4)
+          ("c:/work"     . 3)))
+
+  ;; or Linus/Mac:
+  (setq project-discover-directory-alist
+        '(("~/projects" . 4)))
+
+  ;; Manually run:
+  ;; M-x project-discover-run
+  ;; or:
+  ;; (project-discover-projects-in-directory
+  ;;  '(("c:/projects" . 4) ("c:/work" . 3)))
+
+#+end_src
+
+*** Package manager
+**** Straight
+#+begin_src emacs-lisp
+  (use-package project-discover
+    :after project
+    :straight (project-discover :type git :host github :repo "samwdp/project-discover")
+    :config
+    ;; Windows:
+    (setq project-discover-directory-alist
+          '(("c:/projects" . 4)
+            ("c:/work"     . 3)))
+
+    ;; or Linus/Mac:
+    (setq project-discover-directory-alist
+          '(("~/projects" . 4))))
+#+end_src
+**** Elpaca
+#+begin_src emacs-lisp
+  (use-package project-discover
+    :after project
+    :ensure (project-discover :host github :repo "samwdp/project-discover")
+    :config
+    ;; Windows:
+    (setq project-discover-directory-alist
+          '(("c:/projects" . 4)
+            ("c:/work"     . 3)))
+
+    ;; or Linus/Mac:
+    (setq project-discover-directory-alist
+          '(("~/projects" . 4))))
+#+end_src
+
+
