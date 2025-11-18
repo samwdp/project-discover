@@ -19,6 +19,11 @@ Clone the repo somewhere
   (setq project-discover-directory-alist
         '(("~/projects" . 4)))
 
+  ;; optional
+  (add-hook 'emacs-startup-hook #'project-discover-run)
+  ;; or
+  (add-hook 'kill-emacs-hook #'project-discover-run)
+  
   ;; Manually run:
   ;; M-x project-discover-run
   ;; or:
@@ -33,6 +38,10 @@ Clone the repo somewhere
   (use-package project-discover
     :after project
     :straight (project-discover :type git :host github :repo "samwdp/project-discover")
+    ;; optional
+    :hook (kill-emacs . project-discover-run)
+    ;; or
+    :hook (emacs-startup . project-discover-run)
     :config
     ;; Windows:
     (setq project-discover-directory-alist
@@ -48,6 +57,10 @@ Clone the repo somewhere
   (use-package project-discover
     :after project
     :ensure (project-discover :host github :repo "samwdp/project-discover")
+    ;; optional
+    :hook (kill-emacs . project-discover-run)
+    ;; or
+    :hook (elpaca-after-init . project-discover-run)
     :config
     ;; Windows:
     (setq project-discover-directory-alist
